@@ -1,0 +1,28 @@
+version: "3"
+
+services: 
+  mongo:
+    container_name: mongo
+    image: mongo
+    restart: always
+    ports:
+      - '27017:27017'
+
+  mongo-express:
+    container_name: mongo-express
+    image: mongo-express
+    restart: always
+    ports:
+      - 8085:8081
+
+  app:
+    container_name: node
+    build: .
+    restart: always
+    links:
+      - mongo
+    volumes:
+      - .:/workspace/api
+    ports:
+      - "3000:3000"
+    command: npm run dev
