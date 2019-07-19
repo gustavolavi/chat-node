@@ -22,4 +22,4 @@ app.use(express.json())
 app.use(routes)
 
 //start
-server.listen('3000',()=>console.log('started'))
+server.listen('3001',()=>console.log('started'))

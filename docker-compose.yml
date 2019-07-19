@@ -15,14 +15,26 @@ services:
     ports:
       - 8085:8081
 
-  app:
-    container_name: node
-    build: .
+  backend:
+    container_name: backend
+    build: ./backend
     restart: always
     links:
       - mongo
     volumes:
-      - .:/workspace/api
+      - ./backend:/workspace/api
+    ports:
+      - "3001:3001"
+    command: npm run dev
+
+  fontend:
+    container_name: react
+    build: ./frontend
+    restart: always
+    links:
+      - backend
+    volumes:
+      - ./frontend:/workspace/api
     ports:
       - "3000:3000"
-    command: npm run dev
+    command: yarn start
