@@ -27,14 +27,14 @@ services:
       - "3001:3001"
     command: npm run dev
 
-  fontend:
-    container_name: react
-    build: ./frontend
-    restart: always
-    links:
-      - backend
-    volumes:
-      - ./frontend:/workspace/api
-    ports:
-      - "3000:3000"
-    command: yarn start
+  #fontend:
+  #  container_name: react
+  #  build: ./frontend
+  #  restart: always
+  #  links:
+  #    - backend
+  #  volumes:
+  #    - ./frontend:/workspace/api
+  #  ports:
+  #    - "3000:3000"
+  #  command: yarn start
